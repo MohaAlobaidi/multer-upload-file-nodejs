@@ -1,0 +1,36 @@
+
+<%- include("share/header")  %> 
+<body>
+
+<div class="container m-5">
+  <form method="POST"  action="add" enctype="multipart/form-data" >
+    <input type="text" name='title' class="form-control mb-2" placeholder="enter title">
+    <input  name='file' type="file" class="form-control mb-2" >
+    <button class="btn btn-primary w-100"> upload</button>
+  </form>
+ 
+</div>
+
+<div class="container mt-3">
+  <div class="row">
+    <% for( let index = 0; index < fileList.length; index++ ) { %>
+    
+      <div class="col-md-3 text-center">
+        <form method="POST" action="/deltefile">
+          <input type="text" value='<%=fileList[index].path%>' name="path"class="d-none">
+        <div class="item">
+          <h3><%=fileList[index].title%></h3>
+          <img src="<%=fileList[index].path%>" class="w-100" alt="">
+          <button class="btn btn-danger"> delete file</button>
+        </div>
+      </form>
+      </div>
+ 
+    <% } %>
+   
+  </div>
+</div>
+
+</body>
+<% include ('share/footer.ejs') %> 
+</html>
